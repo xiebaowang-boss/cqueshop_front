@@ -1,19 +1,41 @@
 <template>
+  <html>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-header></v-header>
+    <router-view></router-view>
+    <v-footer></v-footer>
+    <upload-goods></upload-goods>
   </div>
+  </html>
 </template>
 
-<style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+<script>
+
+import header from './components/header/header'
+import footer from './components/footer/footer.vue'
+import UploadGoods from "./components/goods/upload/uploadGoods";
+
+export default {
+  components: {
+    UploadGoods,
+    'v-header': header,
+    'v-footer': footer,
+  }
+}
+
+</script>
+
+<style>
+#app {
+  background-color: rgb(237, 237, 237);
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  background-color: rgb(237, 237, 237);
+}
+*{
+  list-style-type: none;
+}
 </style>
