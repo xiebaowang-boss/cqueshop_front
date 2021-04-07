@@ -39,7 +39,10 @@ export default {
   height: auto
   background-color: white
   padding-bottom: 30px
-
+  h5
+    margin-top 0px
+    padding 10px 0px 0px 0px
+    font-size 18px
   .hot-header
     background-color: #fafafa
     line-height 60px

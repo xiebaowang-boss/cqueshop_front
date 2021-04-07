@@ -29,7 +29,14 @@ export default {
     }
   },
   created() {
-    this.$router.push('/login/login')
+    let token = localStorage.getItem("token")
+    if (token == "null" || token == null){
+      this.$router.push('/login/login')
+    }else{
+      this.$message.warning("当前已有用户登录！请先注销即可访问登录界面！")
+      this.$router.push("/")
+    }
+
   }
 }
 </script>

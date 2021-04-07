@@ -56,7 +56,10 @@ export default {
   border-radius: 8px
   overflow: hidden
   background-color: white
-
+  h5
+    margin-top 0px
+    padding 10px 0px 0px 0px
+    font-size 18px
   .hot-header
     background-color: #fafafa
     line-height 60px

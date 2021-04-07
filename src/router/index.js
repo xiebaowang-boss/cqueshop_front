@@ -38,6 +38,23 @@ const routes = [
     path: "/cart/:token",
     name: "cart",
     component: () => import('../components/Cart/cart')
+  },
+  {
+    path: "/categoryGoods",
+    name: "categoryGoods",
+    component: () => import('../components/goods/categoryGoods/categoryGoods'),
+    children: [
+      {
+        path: ":categoryId",
+        name:"categoryId",
+        component: () => import('../components/goods/categoryGoods/categoryGoodsList')
+      },
+      {
+        path: "search/:keywords",
+        name: "search",
+        component: ()  => import('../components/goods/searchResult/searchResult')
+      }
+    ]
   }
 ]
 

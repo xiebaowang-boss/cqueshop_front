@@ -21,9 +21,9 @@
       <div  class="text item" v-if="user.status == 1">
          状态：正常
       </div>
-      <div class="-progress-line"/>
       <div style="text-align: center;" >
         <el-button type="text" style=" padding: 3px 0">个人中心</el-button>
+        <my-order/>
       </div>
     </el-card>
     <el-card v-else class="box-card" shadow="hover">
@@ -40,9 +40,11 @@
 
 <script>
 import store from "../../../curUser/store";
+import MyOrder from "@/components/header/User/myOrder";
 
 export default {
   name: "user",
+  components: {MyOrder},
   data() {
     return {
       open_delay: 100,

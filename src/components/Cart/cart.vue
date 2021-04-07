@@ -8,7 +8,8 @@
       <el-table
           :data="cartItem"
           border
-          style="width: 100%;height: 50%"
+          :height=" cartItem.length > 0 ? '' : 255 "
+          style="width: 100%"
           empty-text="购物车暂无商品"
           :show-summary="showsummary"
           row-key="goods.id"
@@ -58,28 +59,16 @@
       </el-table>
     </el-main>
     <el-footer v-if="cartItem.length > 0">
-      <el-row :gutter="20">
-        <el-col :span="6">-</el-col>
-        <el-col :span="6">
-          <el-popconfirm
-              title="确定清空购物车吗？"
-              @confirm="delCart"
-          >
-            <el-button slot="reference" icon="el-icon-delete" style="color: red">清空购物车</el-button>
-          </el-popconfirm>
-        </el-col>
-        <el-col :span="6">
-          <el-button>立即购买</el-button>
-        </el-col>
-        <el-col :span="6">-</el-col>
-      </el-row>
+      <cart-operate/>
     </el-footer>
   </el-container>
 </template>
 
 <script>
+import CartOperate from "@/components/Cart/cartOperate/cartOperate";
 export default {
   name: "cart",
+  components: {CartOperate},
   data() {
     return {
       cartItem: [],
@@ -91,26 +80,6 @@ export default {
   methods: {
     goBack() {
       this.$router.back()
-    },
-    delCart() {
-      this.axios.get("/cart/del/" + localStorage.getItem("token"))
-          .then(res => {
-            if (res.data.code == 1) {
-              this.$notify({
-                title: '成功',
-                message: '成功清空购物车！',
-                type: 'success'
-              });
-              window.location.reload()
-            } else {
-              this.$notify({
-                title: '错误',
-                message: '清空购物车失败！',
-                type: 'error'
-              });
-            }
-          })
-
     }
   },
   created() {

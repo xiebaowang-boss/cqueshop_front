@@ -20,7 +20,7 @@
       <el-row :gutter="20">
         <el-col :span="6">-</el-col>
         <el-col :span="6">
-          <el-button>立即购买</el-button>
+          <buy-right-now-btn :goods-id="goodsId"/>
         </el-col>
         <el-col :span="6">
           <el-button icon="el-icon-shopping-cart-2" @click="addToCart">加入购物车</el-button>
@@ -33,10 +33,11 @@
 
 <script>
 import GoodsDetailCard from "@/components/goods/goodsDetailCard/goodsDetailCard";
+import BuyRightNowBtn from "@/components/goods/buyRightNow/BuyRightNowBtn";
 
 export default {
   name: "goodsDetail",
-  components: {GoodsDetailCard},
+  components: {BuyRightNowBtn, GoodsDetailCard},
   data() {
     return {
       goods: null,

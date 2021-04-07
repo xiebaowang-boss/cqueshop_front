@@ -52,7 +52,7 @@ export default {
       rules: {
         name: [
           {required: true, message: '请输入商品名称', trigger: 'blur'},
-          {min: 1, max: 100, message: '长度在 1 到 100 个字符', trigger: 'blur'}
+          {min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur'}
         ],
         image: [
           {required: true, message: '请上传商品图片', trigger: 'change'}

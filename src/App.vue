@@ -32,9 +32,6 @@ export default {
   padding: 0px;
 }
 
-html {
-  background-color: rgb(237, 237, 237);
-}
 *{
   list-style-type: none;
 }

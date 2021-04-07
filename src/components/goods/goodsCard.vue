@@ -6,7 +6,7 @@
         <img :src="imgServerPath+goods.image.url"
              class="image" width="234" height="270">
         <div style="padding: 10px;margin-top: 10px">
-          <span>{{ goods.name }}</span>
+          <div class="goodsName">{{ goods.name }}</div>
           <div class="price">
             <span style="color: red">￥&nbsp;{{ goods.nowprice }}</span>
           </div>
@@ -56,6 +56,11 @@ export default {
       }
       console.log("goodsId:" + goodsid)
     }
+  },
+  watch:{
+    goodsList(){
+        console.log("goodscard数据更新！")
+    }
   }
 }
 </script>
@@ -64,5 +69,9 @@ export default {
 .image {
   width: 100%;
   display: block;
+}
+.goodsName{
+  display: block;
+  height: 50px;
 }
 </style>
