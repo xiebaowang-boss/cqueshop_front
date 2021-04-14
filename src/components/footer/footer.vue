@@ -41,9 +41,9 @@
     height:0
     clear:both;
   .footer
-    background-color: #fafafa
     margin-top: 60px
     border-top: 1px solid #e6e6e6
+    background-color white
     .container
       width: 1220px
       .siteinfo

@@ -30,6 +30,7 @@ export default {
   background-color: rgb(237, 237, 237);
   margin: 0px;
   padding: 0px;
+  width: 100%;
 }
 
 *{

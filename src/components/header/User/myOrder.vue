@@ -14,8 +14,9 @@
         <el-drawer
             title="订单详情"
             :append-to-body="true"
-            :visible.sync="innerDrawer">
-          <order-detail-list :orderItemList="orderItemList"/>
+            :visible.sync="innerDrawer"
+            size="40%">
+          <order-detail-list @sendCommSuccess="sendCommSuccess($event)" :orderItemList="orderItemList"/>
           <div style="margin-top: 30px;text-align: center;float: bottom">
             <el-pagination
                 background
@@ -113,6 +114,9 @@ export default {
     handleInnerCurrentChange(val) {
       console.log(`当前页: ${val}`);
       this.inner.currentPage = val
+      this.getOrderItemList(this.orderId)
+    },
+    sendCommSuccess(){
       this.getOrderItemList(this.orderId)
     }
   }

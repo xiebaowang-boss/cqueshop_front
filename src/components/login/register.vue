@@ -1,9 +1,9 @@
 <template>
   <el-form
-    style="padding: 60px;background-color: white"
-    :status-icon="status_icon"
-    label-position="right"
-    :model="user" :rules="rules" ref="user" label-width="100px" class="demo-ruleForm">
+      style="padding: 60px;background-color: white"
+      :status-icon="status_icon"
+      label-position="right"
+      :model="user" :rules="rules" ref="user" label-width="100px" class="demo-ruleForm">
     <el-form-item label="昵称" prop="name">
       <el-input v-model="user.name" placeholder="请输入用户名或者电话号码"></el-input>
     </el-form-item>
@@ -14,7 +14,7 @@
       <el-input v-model="user.password" placeholder="请输入密码" :show-password='showPassword' autocomplete="off"></el-input>
     </el-form-item>
     <el-form-item label="电话号码" prop="phone">
-      <el-input type="tel" v-model="user.phone" placeholder="请输入电话号码"></el-input>
+      <el-input v-model="user.phone"  placeholder="请输入电话号码"></el-input>
     </el-form-item>
     <el-form-item label="邮箱" prop="email">
       <el-input type="email" v-model="user.email" placeholder="请输入邮箱"></el-input>
@@ -55,7 +55,7 @@ export default {
         email: ''
       },
       rules: {
-        name:[{required: true,min:3,max:10,message: '请输入昵称,长度在3到10个字符',trigger: 'blur'}],
+        name: [{required: true, min: 3, max: 10, message: '请输入昵称,长度在3到10个字符', trigger: 'blur'}],
         username: [
           {required: true, message: '请输入用户名', trigger: 'blur'},
           {min: 5, max: 20, message: '长度在 5 到 20 个字符,推荐使用邮箱', trigger: 'blur'}
@@ -67,11 +67,15 @@ export default {
         sex: [
           {required: true, message: '请选择性别', trigger: 'change'}
         ],
-        phone:[
-          {required: false, message: '请输入正确的电话号码', trigger: 'blur'},
-          {min: 11,max: 11,message:'输入正确的电话号码',trigger: 'blur'}
+        phone: [
+          {required: true,message: '请输入电话号码', trigger: 'blur'},
+          {
+            pattern: /^1[3|4|5|6|7|8][0-9]\d{8}$/,
+            message: "手机号格式不对",
+            trigger: "blur",
+          },
         ],
-        avatar:[
+        avatar: [
           {required: true, message: '请选择头像', trigger: 'blur'}
         ]
       }
@@ -82,18 +86,18 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.axios.post('/login/userRegister', this.user)
-            .then((response) => {
-              console.log("用户注册" + response.data)
-              if (response.data.code == 1){
-                this.$message.success('恭喜你，注册成功！现在可以用这个账号进行登录啦！')
-                this.$router.push('/login')
-              }else {
-                this.$message.error('注册失败！')
-              }
-            })
-          .catch( reason => {
-            this.$message.error('注册失败！网络超时！'+reason)
-          })
+              .then((res) => {
+                console.log("用户注册" + res.data)
+                if (res.data.code == 1) {
+                  this.$message.success('恭喜你，注册成功！现在可以用这个账号进行登录啦！')
+                  this.$router.push('/login/login')
+                } else {
+                  this.$message.error(res.data.msg)
+                }
+              })
+              .catch(reason => {
+                this.$message.error('注册失败！网络超时！' + reason)
+              })
         } else {
           this.$message.error('请检查所填写的用户信息！')
           return false;
@@ -104,7 +108,7 @@ export default {
       this.$refs[formName].resetFields();
     },
     //接收上传头像组件上传的头像对象
-    acceptUserAvatar(data){
+    acceptUserAvatar(data) {
       this.user.avatar = data;
     }
   }

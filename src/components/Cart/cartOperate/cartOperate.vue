@@ -10,7 +10,7 @@
       </el-popconfirm>
     </el-col>
     <el-col :span="6">
-      <ready-to-buy/>
+      <ready-to-buy @paySuccess="paySuccess($event)"/>
     </el-col>
     <el-col :span="6">-</el-col>
   </el-row>
@@ -31,7 +31,7 @@ export default {
                 message: '成功清空购物车！',
                 type: 'success'
               });
-              window.location.reload()
+              this.$emit("clearCart")
             } else {
               this.$notify({
                 title: '错误',
@@ -41,7 +41,14 @@ export default {
             }
           })
 
-    }
+    },
+    paySuccess(){
+      this.$notify.success({
+        title: '结算成功',
+        message: '订单详情信息请将鼠标移至右上角头像处查看！'
+      })
+      this.$emit("paySuccess")
+    },
   }
 }
 </script>

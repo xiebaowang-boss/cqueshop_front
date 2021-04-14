@@ -25,12 +25,6 @@ export default {
   data() {
     return {
       headerItems: [
-        {item: '在线商城'},
-        {item: 'Smartisan M1 / M1L'},
-        {item: 'Smartisan OS'},
-        {item: '欢喜云'},
-        {item: '应用下载'},
-        {item: '官方论坛'}
       ],
     }
   },

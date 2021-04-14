@@ -4,10 +4,10 @@
       <span><b>{{ goods.name }}</b></span>
     </div>
     <div class="text item">
-      {{'商品所属分类：' + goods.category.categoryName }}
+      {{ '商品所属分类：' + goods.category.categoryName }}
     </div>
     <div class="text item">
-      {{'商品描述：' + goods.desc }}
+      {{ '商品描述：' + goods.desc }}
     </div>
     <div class="text item">
       商品原价：￥
@@ -18,22 +18,23 @@
       <span style="color: red">{{ goods.nowprice }}</span>
     </div>
     <div class="text item">
-      {{'上架时间：' + goods.createtime }}
+      上架时间： {{ goods.createtime | formatDate }}
     </div>
     <div class="text item" v-if="goods.status == 1">
       商品状态： 在售
     </div>
     <div class="text item">
-      {{'销量：' + goods.salesVolume }}
+      {{ '销量：' + goods.salesVolume }}
     </div>
 
   </el-card>
 </template>
 
 <script>
+
 export default {
-name: "goodsDetailCard",
-  props:["goods"]
+  name: "goodsDetailCard",
+  props: ["goods"]
 }
 </script>
 
@@ -51,6 +52,7 @@ name: "goodsDetailCard",
   display: table;
   content: "";
 }
+
 .clearfix:after {
   clear: both
 }

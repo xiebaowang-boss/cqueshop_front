@@ -34,17 +34,26 @@
     </el-table-column>
     <el-table-column
         label="收货人"
-        width="200"
         prop="name">
     </el-table-column>
     <el-table-column
+        label="送货方式"
+        width="180"
+        prop="sendType.name">
+    </el-table-column>
+    <el-table-column
         label="下单时间"
+        width="180"
         prop="createDate">
+      <template slot-scope="scope">
+        {{ scope.row.createDate | formatDate }}
+      </template>
     </el-table-column>
   </el-table>
 </template>
 
 <script>
+
 export default {
   name: "orderList",
   props:{

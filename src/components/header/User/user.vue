@@ -27,7 +27,7 @@
       </div>
     </el-card>
     <el-card v-else class="box-card" shadow="hover">
-      <div slot="header" class="clearfix">
+      <div class="clearfix">
         <span>用户尚未登录</span>
         <el-button style="float: right;" type="text">
           <router-link to="/login">去登录</router-link>
@@ -73,7 +73,6 @@ export default {
             this.isLogin = false
           } else if (response.data.code == 1) {
             store.commit("login", localStorage.getItem("token"))
-            console.log("头像地址：" + this.$GLOBAL.imgServerPath + response.data.data.avatar.url)
             this.avatarURL = this.$GLOBAL.imgServerPath + response.data.data.avatar.url
             this.user = response.data.data;
             this.isLogin = true

@@ -79,7 +79,6 @@ export default {
   height: 90px
   //position: relative
   width: 100%
-
   .inner
     margin: 0 auto
     width: 1220px

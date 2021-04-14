@@ -55,17 +55,34 @@
             label="商品总价（元）"
             prop="totalPrice">
         </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-popconfirm
+                title="确定删除从购物车删除此件商品吗？"
+                @confirm="handleDelete(scope.$index, scope.row)"
+            >
+              <el-button
+                  size="small"
+                  type="danger"
+                  slot="reference">
+                删除商品
+              </el-button>
+            </el-popconfirm>
+          </template>
+
+        </el-table-column>
 
       </el-table>
     </el-main>
     <el-footer v-if="cartItem.length > 0">
-      <cart-operate/>
+      <cart-operate @paySuccess="paySuccess($event)" @clearCart="clearCart($event)"/>
     </el-footer>
   </el-container>
 </template>
 
 <script>
 import CartOperate from "@/components/Cart/cartOperate/cartOperate";
+
 export default {
   name: "cart",
   components: {CartOperate},
@@ -78,25 +95,54 @@ export default {
     }
   },
   methods: {
+    paySuccess(){
+      this.getCart()
+    },
     goBack() {
       this.$router.back()
-    }
-  },
-  created() {
-    if (localStorage.getItem("token") == "null") {
-      this.$message.warning("当前未登录，正在跳转到首页！")
-      this.$router.push("/")
+    },
+    async handleDelete(index, row) {
+      console.log("index:" + index + "--key:" + row.key + "--goodsid" + row.goods.id)
+      this.axios.post("/cart/delGoodsFromCart", {
+        goodsId: row.goods.id,
+        userId: localStorage.getItem("token")
+      }).then(res => {
+        if (res.data.code == 1) {
+          this.$notify.success({
+            title: "删除成功",
+            message: "成功从购物车当中删除一条商品信息！"
+          })
+          this.getCart()
+        }else {
+          this.$notify.error({
+            title: "删除失败",
+            message: res.data.msg
+          })
+        }
+      })
+    },
+    async getCart() {
+      this.axios.get("/cart/get/" + this.token)
+          .then(res => {
+            if (res.data.code == 1) {
+              this.cartItem = res.data.data
+            } else {
+              //使购物车数据刷新
+              this.cartItem = new Array()
+            }
+          })
+    },
+    clearCart(){
+      this.getCart()
     }
   },
   mounted() {
-    this.axios.get("/cart/get/" + this.token)
-        .then(res => {
-          if (res.data.code == 1) {
-            this.cartItem = res.data.data
-          } else {
-            this.$message.warning("购物车暂无商品！")
-          }
-        })
+    if (localStorage.getItem("token") == "null") {
+      this.$message.warning("当前未登录，正在跳转到首页！")
+      this.$router.push("/")
+    }else {
+      this.getCart()
+    }
   }
 }
 </script>

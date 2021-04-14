@@ -28,16 +28,18 @@
         <el-col :span="6">-</el-col>
       </el-row>
     </el-footer>
+    <comm-info :goods-id="goodsId"/>
   </el-container>
 </template>
 
 <script>
 import GoodsDetailCard from "@/components/goods/goodsDetailCard/goodsDetailCard";
 import BuyRightNowBtn from "@/components/goods/buyRightNow/BuyRightNowBtn";
+import CommInfo from "@/components/goods/comments/commInfo";
 
 export default {
   name: "goodsDetail",
-  components: {BuyRightNowBtn, GoodsDetailCard},
+  components: {CommInfo, BuyRightNowBtn, GoodsDetailCard},
   data() {
     return {
       goods: null,
@@ -70,7 +72,7 @@ export default {
       console.log("goodsId:" + this.goodsid)
     }
   },
-  created() {
+  mounted() {
     console.log("商品id：" + this.$route.params.goodsId)
     this.axios.get("/goods/" + this.$route.params.goodsId)
         .then(res => {

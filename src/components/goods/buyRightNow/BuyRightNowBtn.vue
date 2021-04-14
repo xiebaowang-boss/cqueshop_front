@@ -15,7 +15,12 @@
         <el-form-item label="数量">
           <el-input-number v-model="orderInfo.num" :min="1" :max="99"></el-input-number>
         </el-form-item>
-
+        <el-form-item label="送货方式" prop="sengType">
+          <el-select v-model="orderInfo.sendTypeId" @change="selectChange" placeholder="请选择送货方式">
+            <el-option v-for="(sendType,index) in sendTypeList" :key="index" :label="sendType.name"
+                       :value="sendType.id"/>
+          </el-select>
+        </el-form-item>
         <el-form-item label="订单备注">
           <el-input v-model="orderInfo.remarks" autocomplete="off"></el-input>
         </el-form-item>
@@ -40,11 +45,13 @@ export default {
     return {
       dialogFormVisible: false,
       formLabelWidth: '120px',
+      sendTypeList:[],
       orderInfo: {
         name: '',
         phone: '',
         address: '',
         remarks: '',
+        sendTypeId:'',
         num: 1,
         userId: localStorage.getItem("token")
       },
@@ -60,6 +67,9 @@ export default {
         address: [
           {required: true, message: '输入收货地址', trigger: 'change'},
           {min: 3, max: 20, message: '请正确输入收获地址', trigger: 'blur'}
+        ],
+        sendType:[
+          {required: true, message: '请选择送货方式', trigger: 'change'}
         ]
       }
     }
@@ -83,9 +93,28 @@ export default {
             }
           })
     },
+    selectChange() {
+      this.$forceUpdate()
+    },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    getSendTypeList(){
+      this.axios.get("/sendType/getSendTypeEnabled")
+          .then(res => {
+            if (res.data.code == 1){
+              this.sendTypeList = res.data.data
+            }else{
+              this.$notify.error({
+                title: '失败',
+                message: '获取送货方式失败！'
+              })
+            }
+          })
     }
+  },
+  mounted() {
+    this.getSendTypeList()
   }
 }
 </script>
