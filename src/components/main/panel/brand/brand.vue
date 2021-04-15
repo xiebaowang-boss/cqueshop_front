@@ -58,7 +58,7 @@ export default {
   background-color: white
   h5
     margin-top 0px
-    padding 10px 0px 0px 0px
+    padding 10px 0px px 0px
     font-size 18px
   .hot-header
     background-color: #fafafa

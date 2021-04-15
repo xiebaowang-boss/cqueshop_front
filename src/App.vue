@@ -4,7 +4,6 @@
     <v-header></v-header>
     <router-view></router-view>
     <v-footer></v-footer>
-    <upload-goods></upload-goods>
   </div>
   </html>
 </template>
@@ -13,11 +12,9 @@
 
 import header from './components/header/header'
 import footer from './components/footer/footer.vue'
-import UploadGoods from "./components/goods/upload/uploadGoods";
 
 export default {
   components: {
-    UploadGoods,
     'v-header': header,
     'v-footer': footer,
   }
