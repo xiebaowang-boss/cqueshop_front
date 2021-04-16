@@ -40,7 +40,7 @@
         prop="totalPrice">
     </el-table-column>
     <el-table-column
-        label="操作">
+        label="评论">
       <template slot-scope="scope">
         <add-comment v-if="scope.row.isComm == 0" @sendCommSuccess="sendCommSuccess($event)" :order-item-id="scope.row.id" :goods-id="scope.row.goods.id"/>
         <el-button v-else @click="isComm" type="success" icon="el-icon-check" circle></el-button>

@@ -12,7 +12,7 @@
         <el-form-item label="地址" prop="address">
           <el-input v-model="orderInfo.address" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="送货方式" prop="sengType">
+        <el-form-item label="送货方式" prop="sendType">
           <el-select v-model="orderInfo.sendTypeId" @change="selectChange" placeholder="请选择送货方式">
             <el-option v-for="(sendType,index) in sendTypeList" :key="index" :label="sendType.name"
                        :value="sendType.id"/>

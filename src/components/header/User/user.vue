@@ -22,7 +22,7 @@
          状态：正常
       </div>
       <div style="text-align: center;" >
-        <el-button type="text" style=" padding: 3px 0">个人中心</el-button>
+        <personal-center :user-id="user.id"/>
         <my-order/>
       </div>
     </el-card>
@@ -41,10 +41,11 @@
 <script>
 import store from "../../../curUser/store";
 import MyOrder from "@/components/header/User/myOrder";
+import PersonalCenter from "@/components/header/User/PersonalCenter";
 
 export default {
   name: "user",
-  components: {MyOrder},
+  components: {PersonalCenter, MyOrder},
   data() {
     return {
       open_delay: 100,

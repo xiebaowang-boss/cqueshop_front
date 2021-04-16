@@ -3,15 +3,14 @@
     <div class="container">
       <div class="siteinfo">
         <ul class="footer-nav clearfix">
-          <li v-for="item in footerlist" v-bind:key="item">
+          <li v-for="item in footerlist" v-bind:key="item.name">
             <h1>{{ item.dt }}</h1>
             <ul style="margin-top: 10px">
-              <li v-for="dlitem in item.dl" v-bind:key="dlitem">
+              <li v-for="dlitem in item.dl" v-bind:key="dlitem.name">
                 <div>
                   <img :src="dlitem.img"/>
                   <a :href="dlitem.url">{{ dlitem.name + dlitem.author }}</a>
                 </div>
-
               </li>
             </ul>
           </li>
@@ -35,6 +34,7 @@
 </template>
 <script>
 export default {
+  name: 'Footer',
   data() {
     return {
       footerlist: [{

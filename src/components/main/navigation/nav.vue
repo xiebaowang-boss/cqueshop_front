@@ -26,7 +26,7 @@
 import Search from "@/components/main/navigation/search/search";
 
 export default {
-  name: 'nav',
+  name: 'Nav',
   components: {Search},
   data() {
     return {

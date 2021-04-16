@@ -19,8 +19,11 @@ export default {
   },
   methods: {
     searchHandler() {
-      console.log("开始搜索")
-      this.$router.push("/categoryGoods/search/"+this.keywords)
+      if (this.keywords == ''){
+        return this.$message.info("请输入商品关键字！")
+      }else {
+        this.$router.push("/categoryGoods/search/"+this.keywords)
+      }
     }
   },
 }

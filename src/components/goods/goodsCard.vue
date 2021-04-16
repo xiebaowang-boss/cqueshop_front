@@ -7,8 +7,10 @@
              class="image" width="234" height="270">
         <div style="padding: 10px;margin-top: 10px">
           <div class="goodsName">{{ goods.name }}</div>
-          <div class="price">
+
+          <div>
             <span style="color: red">￥&nbsp;{{ goods.nowprice }}</span>
+            <span style="float: right;font-size: 12px">{{goods.category.categoryName }}</span>
           </div>
 
         </div>

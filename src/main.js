@@ -5,8 +5,6 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import atui from 'atui'
-import 'atui/dist/greater-blue.css'
 import global from './components/util/Global'
 import {formatDate} from "@/components/util/formatDate";
 import '../static/css/reset.css'
@@ -16,7 +14,6 @@ Vue.config.productionTip = false
 Vue.filter('formatDate',formatDate)
 Vue.prototype.$GLOBAL = global
 Vue.use(ElementUI)
-Vue.use(atui)
 Vue.use(VueAxios, axios)
 
 new Vue({
