@@ -3,7 +3,7 @@
       :data="orderItemList"
       border
       style="width: 100%"
-      empty-text="购物车暂无商品"
+      empty-text="该订单没有商品"
       :show-summary="showsummary"
       row-key="goods.id"
   >
@@ -16,7 +16,6 @@
             style="width: 140px; height: 100px;margin: auto"
             :src="imgServerPath+scope.row.goods.image.url"
             fit="contain"
-            :preview-src-list=[imgServerPath+scope.row.goods.image.url]
         ></el-image>
       </template>
     </el-table-column>

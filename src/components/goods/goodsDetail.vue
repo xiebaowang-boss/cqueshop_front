@@ -9,7 +9,9 @@
         <el-image
             style="width: 500px; height: 400px;margin-top: 10%"
             :src="this.$GLOBAL.imgServerPath+goods.image.url"
-            fit="contain"></el-image>
+            fit="contain"
+            :preview-src-list=[this.$GLOBAL.imgServerPath+goods.image.url]
+        ></el-image>
       </el-aside>
       <el-main>
         <goods-detail-card :goods="goods"></goods-detail-card>

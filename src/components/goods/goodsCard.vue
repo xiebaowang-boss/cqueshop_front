@@ -3,8 +3,14 @@
     <el-col :span="6" style="padding: 10px" v-for="goods in goodsList" v-bind:key="goods.id" :push="push"
             :offset="offset">
       <el-card shadow="hover" style="margin: 0px 0px 5px 5px;">
-        <img :src="imgServerPath+goods.image.url"
-             class="image" width="234" height="270">
+
+        <el-image
+            class="image"
+            style="width: 234px; height: 270px;"
+            :src="imgServerPath+goods.image.url"
+            fit="contain"
+            :preview-src-list=[imgServerPath+goods.image.url]
+        ></el-image>
         <div style="padding: 10px;margin-top: 10px">
           <div class="goodsName">{{ goods.name }}</div>
 

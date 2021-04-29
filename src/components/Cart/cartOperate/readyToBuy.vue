@@ -53,15 +53,19 @@ export default {
           { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
         ],
         phone: [
-          { type:"number",required: true,message: '请输入收货人电话号码', trigger: 'change' },
-          { min: 11, max: 11,message: '请正确输入电话号码', trigger: 'blur' }
+          {required: true,message: '请输入电话号码', trigger: 'blur'},
+          {
+            pattern: /^1[3|4|5|6|7|8][0-9]\d{8}$/,
+            message: "手机号格式不对",
+            trigger: "blur",
+          },
         ],
         address: [
           { required: true, message: '输入收货地址', trigger: 'change' },
           {min: 3, max: 20, message: '请正确输入收获地址', trigger: 'blur'}
         ],
         sendType:[
-          {required: true, message: '请选择送货方式', trigger: 'change'}
+          {required: true, message: '请选择送货方式', trigger: 'blur'}
         ]
       }
     }

@@ -16,15 +16,14 @@
           </li>
         </ul>
         <div class="service">
-          <p>社区杂货铺</p>
-          <span>社区杂货铺</span>
+          <p>社区杂货网店</p>
         </div>
         <div class="language"></div>
       </div>
       <div class="copyright">
         <span>Copyright © 2021  @海盗船长蟹老板</span>
         <ul class="firstul clearfix">
-          <li><a href="#">社区杂货铺</a></li>
+          <li><a href="#">社区杂货网店</a></li>
         </ul>
         <ul class="secondul">
         </ul>
@@ -38,7 +37,7 @@ export default {
   data() {
     return {
       footerlist: [{
-        'dt': '社区杂货铺在代码仓库',
+        'dt': '社区杂货网店在代码仓库',
         'dl': [
           {
             name: 'Gitee',
@@ -56,12 +55,12 @@ export default {
         'dt': '联系我',
         'dl': [
           {
-            name: 'Tecent QQ',
+            name: 'QQ',
             author: '@1210579586',
             img: require('../../assets/images/footer/QQ.png'),
             url: '#'
           },{
-            name: 'Tencent Wechat',
+            name: 'Wechat',
             author: '@x1210579586',
             img: require('../../assets/images/footer/WECHAT.png'),
             url: '#'

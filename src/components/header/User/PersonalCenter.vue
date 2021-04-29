@@ -15,11 +15,11 @@
         <el-form-item label="用户名" prop="username">
           <el-input disabled v-model="user.username" placeholder="请输入用户名(此用户名用于登录)" autocomplete="off"></el-input>
         </el-form-item>
+        <el-form-item label="电话号码" prop="phone">
+          <el-input disabled v-model="user.phone" placeholder="请输入电话号码"></el-input>
+        </el-form-item>
         <el-form-item label="昵称" prop="name">
           <el-input v-model="user.name" placeholder="请输入昵称"></el-input>
-        </el-form-item>
-        <el-form-item label="电话号码" prop="phone">
-          <el-input v-model="user.phone" placeholder="请输入电话号码"></el-input>
         </el-form-item>
         <el-form-item label="邮箱" prop="email">
           <el-input type="email" v-model="user.email" placeholder="请输入邮箱"></el-input>
