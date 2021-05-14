@@ -20,7 +20,7 @@
         >
           <template slot-scope="scope">
             <el-image
-                style="width: 250px; height: 100px;margin: auto"
+                style="width: 250px; height: 100px"
                 :src="imgServerPath+scope.row.goods.image.url"
                 fit="contain"></el-image>
           </template>

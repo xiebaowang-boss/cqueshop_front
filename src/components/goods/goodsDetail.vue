@@ -44,7 +44,7 @@ export default {
   components: {CommInfo, BuyRightNowBtn, GoodsDetailCard},
   data() {
     return {
-      goods: null,
+      goods: Object,
       goodsId: this.$route.params.goodsId
     }
   },
@@ -74,8 +74,7 @@ export default {
       console.log("goodsId:" + this.goodsid)
     }
   },
-  mounted() {
-    console.log("商品id：" + this.$route.params.goodsId)
+  created() {
     this.axios.get("/goods/" + this.$route.params.goodsId)
         .then(res => {
           if (res.data.code == 1) {
